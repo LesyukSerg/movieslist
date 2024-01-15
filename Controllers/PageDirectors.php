@@ -14,7 +14,7 @@
 
         public function show()
         {
-            $mov_obj = new Directors($this->db);
+            $mov_obj = new Directors();
             $count = $mov_obj->count();
 
             $title = $this->title;

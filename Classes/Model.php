@@ -26,7 +26,7 @@
         public function getById($id): array
         {
             $id = (int)$id;
-            $sql = "SELECT * FROM $this->table_name WHERE $this->key=$id";
+            $sql = "SELECT * FROM $this->table WHERE $this->key=$id";
 
             return $this->db->fetchRow($sql);
         }

@@ -11,8 +11,8 @@
     {
         public function show()
         {
-            $mov_obj = new Movies($this->db);
-            $dir_obj = new Directors($this->db);
+            $mov_obj = new Movies();
+            $dir_obj = new Directors();
 
             $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
             $title = $id ? 'Edit Movie' : 'Add Movie';

@@ -12,7 +12,7 @@
 
         public function show()
         {
-            $dir_obj = new Directors($this->db);
+            $dir_obj = new Directors();
             $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
             $title = $id ? "Edit Director" : "Add Director";
 
