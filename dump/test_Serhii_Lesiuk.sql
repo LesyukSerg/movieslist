@@ -11,7 +11,7 @@ USE `test_Serhii_Lesiuk`;
 
 DROP TABLE IF EXISTS `director`;
 CREATE TABLE `director` (
-  `directorId` int(11) NOT NULL AUTO_INCREMENT,
+  `directorId` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`directorId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -31,8 +31,8 @@ ON DUPLICATE KEY UPDATE `directorId` = VALUES(`directorId`), `name` = VALUES(`na
 
 DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie` (
-  `movieId` int(11) NOT NULL AUTO_INCREMENT,
-  `directorId` int(11) NOT NULL,
+  `movieId` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `directorId` int(11) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `releaseDate` date NOT NULL,
@@ -75,4 +75,4 @@ INSERT INTO `movie` (`movieId`, `directorId`, `name`, `description`, `releaseDat
 (36,	11,	'Blade Runner 2049',	'A young blade runner\'s discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who\'s been missing for thirty years.',	'2017-10-06')
 ON DUPLICATE KEY UPDATE `movieId` = VALUES(`movieId`), `directorId` = VALUES(`directorId`), `name` = VALUES(`name`), `description` = VALUES(`description`), `releaseDate` = VALUES(`releaseDate`);
 
--- 2023-12-22 16:45:06
+-- 2024-01-15 16:54:43
