@@ -1,8 +1,8 @@
-<?
+<?php
     session_start();
-    date_default_timezone_set("Europe/Kiev");
+    date_default_timezone_set('Europe/Kiev');
     define('ROOTDIR', getcwd());
-    define('cls', ROOTDIR . "/classes/");
+    define('cls', ROOTDIR . '/classes/');
     define('view', ROOTDIR . "/view/");
 
     require ROOTDIR . "/conf/connect.php";
@@ -24,8 +24,8 @@
 
     $director = $dirObj->getDirectorById($id);
 ?>
-<?php require view . "header.php"; ?>
-<?php require view . "menu.php"; ?>
+<?php require view . 'header.php'; ?>
+<?php require view . 'menu.php'; ?>
 <?= $updated ? '<div class="alert alert-success" role="alert">Director has been updated</div>' : '' ?>
 <?= $added ? '<div class="alert alert-info" role="alert">Director has been added</div>' : '' ?>
 
@@ -42,4 +42,4 @@
         </form>
     </div>
 
-<?php require view . "footer.php"; ?>
+<?php require view . 'footer.php'; ?>

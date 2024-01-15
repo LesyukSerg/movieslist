@@ -9,9 +9,10 @@
         {
             $page = trim($_SERVER['SCRIPT_NAME'], '/');
             if ($page != 'login.php') {
-                if (!$this->isAuthenticated()) header('Location: login.php');
+                //!strstr($_SERVER['SCRIPT_NAME'], 'api')
+                if (!$this->isAuthenticated()) header('Location: /login.php');
             } else {
-                if ($this->isAuthenticated()) header('Location: index.php');
+                if ($this->isAuthenticated()) header('Location: /index.php');
             }
         }
 
