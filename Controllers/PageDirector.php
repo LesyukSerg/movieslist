@@ -18,9 +18,13 @@
 
             if ($_POST) {
                 if ($id) {
-                    $updated = $dir_obj->editDirector($id, $_POST['name']);
+                    $updated = $dir_obj->edit($id, [
+                        'name' => $_POST['name']
+                    ]);
                 } else {
-                    $added = $dir_obj->addDirector($_POST['name']);
+                    $added = $dir_obj->add([
+                        'name' => $_POST['name']
+                    ]);
                     $title = "Add another Director";
                 }
             }

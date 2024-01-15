@@ -19,9 +19,19 @@
 
             if ($_POST) {
                 if ($id) {
-                    $updated = $mov_obj->editMovie($id, $_POST['directorId'], $_POST['name'], $_POST['description'], $_POST['releaseDate']);
+                    $updated = $mov_obj->edit($id, [
+                        'directorId'  => (int)$_POST['directorId'],
+                        'name'        => $_POST['name'],
+                        'description' => $_POST['description'],
+                        'releaseDate' => $_POST['releaseDate']
+                    ]);
                 } else {
-                    $added = $mov_obj->addMovie($_POST['directorId'], $_POST['name'], $_POST['description'], $_POST['releaseDate']);
+                    $added = $mov_obj->add([
+                        'directorId'  => (int)$_POST['directorId'],
+                        'name'        => $_POST['name'],
+                        'description' => $_POST['description'],
+                        'releaseDate' => $_POST['releaseDate']
+                    ]);
                     $title = "Add another Movie";
                 }
             }

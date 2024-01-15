@@ -15,6 +15,36 @@
             $this->db = new DB($conn['host'], $conn['user'], $conn['pass'], $conn['dbname']);
         }
 
+        public function add($data): int
+        {
+            foreach ($data as &$value) {
+                $value = $this->db->escapeString($value);
+            }
+
+            $names = implode(',', array_keys($data));
+            $values = implode("','", $data);
+
+            $sql = "INSERT INTO $this->table ($names) VALUES ('$values')";
+            $this->db->query($sql);
+
+            return $this->db->getLastInsertId();
+        }
+
+        public function edit($id, $data): bool
+        {
+            $values = [];
+            foreach ($data as $key => $value) {
+                $value = $this->db->escapeString($value);
+                $values[] = "$key='$value'";
+            }
+
+            $values = implode(',', $values);
+
+            $sql = "UPDATE $this->table SET $values WHERE $this->key=$id";
+
+            return $this->db->query($sql);
+        }
+
         public function delete($id): bool
         {
             $id = (int)$id;
