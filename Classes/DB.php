@@ -3,7 +3,6 @@
     namespace Classes;
 
     use mysqli;
-    use mysqli_result;
 
 
     class DB
@@ -72,10 +71,5 @@
         public function escapeString($value): string
         {
             return $this->conn->real_escape_string($value);
-        }
-
-        public function close()
-        {
-            $this->conn->close();
         }
     }

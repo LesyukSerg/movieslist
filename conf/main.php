@@ -7,7 +7,6 @@
     date_default_timezone_set('Europe/Kiev');
 
     define('ROOTDIR', $_SERVER['DOCUMENT_ROOT']);
-    const cls = ROOTDIR . '/Classes/';
     const view = ROOTDIR . '/View/';
 
     require_once ROOTDIR . '/autoload.php';

@@ -7,9 +7,6 @@
 
     class PageDirector extends Page
     {
-        protected string $title = 'Director';
-        protected string $page_name = 'director';
-
         public function show()
         {
             $dir_obj = new Directors();
