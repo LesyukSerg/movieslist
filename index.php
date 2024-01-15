@@ -7,6 +7,7 @@
     const view = ROOTDIR . '/view/';
 
     require ROOTDIR . '/conf/connect.php';
+    require cls . 'Utils.php';
     require cls . 'Authorization.php';
     require cls . 'Movies.php';
 
@@ -31,7 +32,7 @@
             foreach ($movies_list as $movie) {
                 echo '
                 <li class="list-group-item">                
-                    <div class="float-sm-start">' . $movie['name'] . '</div>
+                    <div class="float-sm-start">' . Utils::htmlEscape($movie['name']) . '</div>
                     <button class="btn btn-sm ms-2 btn-danger float-end del-movie" data-id="' . $movie['movieId'] . '">Delete</button>
                     <a class="btn btn-sm btn-primary float-end" href="/movie.php?id=' . $movie['movieId'] . '">Edit</a>
                     <button class="btn btn-sm btn-link" data-bs-toggle="collapse" aria-expanded="false" 
@@ -39,9 +40,9 @@
                 
                     <div class="row collapse mt-2" id="collapse' . $movie['movieId'] . '">
                         <div class="card card-body">
-                            <h5 class="card-title">' . $movie['name'] . '</h5>
+                            <h5 class="card-title">' . Utils::htmlEscape($movie['name']) . '</h5>
                             <h6 class="card-subtitle mb-2 text-muted">' . $movie['releaseDate'] . '</h6>
-                            <p class="card-text">' . $movie['description'] . '</p>
+                            <p class="card-text">' . Utils::htmlEscape($movie['description']) . '</p>
                         </div>
                     </div>
                 </li>

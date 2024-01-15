@@ -10,6 +10,7 @@
     //echo __LINE__ . ' = ' . round(microtime(1) - $time, 4) . "<br>";
 
     require ROOTDIR . '/conf/connect.php';
+    require cls . 'Utils.php';
     require cls . 'Directors.php';
     require cls . 'Authorization.php';
 
@@ -32,7 +33,7 @@
         <?php
             foreach ($directors_list as $director) {
                 echo '
-                <li class="list-group-item">' . $director['name'] . '
+                <li class="list-group-item">' . Utils::htmlEscape($director['name']) . '
                     <button class="btn btn-sm ms-2 btn-danger float-end del-director" data-id="' . $director['directorId'] . '">Delete</button>
                     <a class="btn btn-sm btn-primary float-end" href="/director.php?id=' . $director['directorId'] . '">Edit</a>
                 </li>

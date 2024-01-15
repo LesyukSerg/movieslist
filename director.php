@@ -6,6 +6,7 @@
     const view = ROOTDIR . "/view/";
 
     require ROOTDIR . "/conf/connect.php";
+    require cls . 'Utils.php';
     require cls . "Directors.php";
     require cls . "Authorization.php";
     $userObj = new Authorization();
@@ -36,7 +37,8 @@
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="enter Director's name" value="<?= $director['name'] ?>" required>
+                <input type="text" class="form-control" id="name" name="name" placeholder="enter Director's name"
+                       value="<?= Utils::htmlEscape($director['name']) ?>" required>
             </div>
 
             <button type="submit" class="btn mt-2 btn-primary float-end"><?= $id ? 'EDIT' : 'ADD' ?></button>

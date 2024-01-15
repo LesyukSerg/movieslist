@@ -9,7 +9,7 @@
         {
             $this->db = $db;
         }
-
+//todo data validation
         public function addMovie($directorID, $name, $description, $release_date): int
         {
             $directorID = (int)$directorID;
