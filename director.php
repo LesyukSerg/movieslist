@@ -2,27 +2,28 @@
     session_start();
     date_default_timezone_set('Europe/Kiev');
     define('ROOTDIR', getcwd());
-    define('cls', ROOTDIR . '/classes/');
-    define('view', ROOTDIR . "/view/");
+    const cls = ROOTDIR . '/classes/';
+    const view = ROOTDIR . "/view/";
 
     require ROOTDIR . "/conf/connect.php";
     require cls . "Directors.php";
     require cls . "Authorization.php";
     $userObj = new Authorization();
-    $dirObj = new Directors($db);
+    /* $var connect.php */
+    $dir_obj = new Directors($db);
     $id = (int)$_GET['id'];
     $title = $id ? "Edit Director" : "Add Director";
 
     if ($_POST) {
         if($id) {
-            $updated = $dirObj->editDirector($id, $_POST['name']);
+            $updated = $dir_obj->editDirector($id, $_POST['name']);
         } else {
-            $added = $dirObj->addDirector($_POST['name']);
+            $added = $dir_obj->addDirector($_POST['name']);
             $title = "Add another Director";
         }
     }
 
-    $director = $dirObj->getDirectorById($id);
+    $director = $dir_obj->getDirectorById($id);
 ?>
 <?php require view . 'header.php'; ?>
 <?php require view . 'menu.php'; ?>
@@ -34,7 +35,7 @@
 
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
             <div class="form-group">
-                <label for="movieTitle">Name:</label>
+                <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="enter Director's name" value="<?= $director['name'] ?>" required>
             </div>
 

@@ -3,9 +3,9 @@
     date_default_timezone_set('Europe/Kiev');
     header('Content-Type', 'json/application');
 
-    define('ROOTDIR', getcwd().'/../');
-    define('cls', ROOTDIR . '/classes/');
-    define('view', ROOTDIR . '/view/');
+    define('ROOTDIR', getcwd() . '/../');
+    const cls = ROOTDIR . '/classes/';
+    const view = ROOTDIR . '/view/';
 
     require ROOTDIR . '/conf/connect.php';
     require cls . 'Movies.php';

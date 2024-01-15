@@ -4,8 +4,8 @@
     date_default_timezone_set('Europe/Kiev');
 
     define('ROOTDIR', getcwd());
-    define('cls', ROOTDIR . '/classes/');
-    define('view', ROOTDIR . '/view/');
+    const cls = ROOTDIR . '/classes/';
+    const view = ROOTDIR . '/view/';
 
     //echo __LINE__ . ' = ' . round(microtime(1) - $time, 4) . "<br>";
 

@@ -2,8 +2,8 @@
     session_start();
     date_default_timezone_set('Europe/Kiev');
     define('ROOTDIR', getcwd());
-    define('cls', ROOTDIR . '/classes/');
-    define('view', ROOTDIR . '/view/');
+    const cls = ROOTDIR . '/classes/';
+    const view = ROOTDIR . '/view/';
 
     require ROOTDIR . '/conf/connect.php';
     require cls . 'Movies.php';
@@ -37,12 +37,12 @@
 
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
             <div class="form-group">
-                <label for="movieTitle">Name:</label>
+                <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="enter movie name" value="<?= $movie['name'] ?>" required>
             </div>
 
             <div class="form-group">
-                <label for="director">Director:</label>
+                <label for="directorId">Director:</label>
                 <select class="form-control" id="directorId" name="directorId" required>
                     <?php
                         foreach ($directors as $one) {

@@ -2,26 +2,24 @@
 
     class Authorization
     {
-        private $login = 'admin';
-        private $password = 'admin';
+        private string $login = 'admin';
+        private string $password = 'admin';
 
         public function __construct()
         {
             $page = trim($_SERVER['SCRIPT_NAME'], '/');
             if ($page != 'login.php') {
-                //!strstr($_SERVER['SCRIPT_NAME'], 'api')
                 if (!$this->isAuthenticated()) header('Location: /login.php');
-            } else {
-                if ($this->isAuthenticated()) header('Location: /index.php');
-            }
+
+            } elseif ($this->isAuthenticated()) header('Location: /index.php');
         }
 
-        public function isAuthenticated()
+        public function isAuthenticated(): bool
         {
             return isset($_SESSION['login']) && $_SESSION['login'] == $this->login;
         }
 
-        public function auth($login, $pass)
+        public function auth($login, $pass): int
         {
             if ($login == $this->login && $pass == $this->password) {
                 $_SESSION['login'] = $login;

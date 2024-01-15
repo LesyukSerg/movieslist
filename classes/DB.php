@@ -2,11 +2,11 @@
 
     class DB
     {
-        private $host;
-        private $username;
-        private $password;
-        private $database;
-        private $conn;
+        private string $host;
+        private string $username;
+        private string $password;
+        private string $database;
+        private mysqli $conn;
 
         public function __construct($host, $username, $password, $database)
         {
@@ -27,7 +27,7 @@
             }
         }
 
-        public function query($sql)
+        public function query($sql): mysqli_result
         {
             $result = $this->conn->query($sql);
 
@@ -38,13 +38,13 @@
             return $result;
         }
 
-        public function fetchRow($sql)
+        public function fetchRow($sql): array
         {
             $result = $this->query($sql);
             return $result->fetch_assoc();
         }
 
-        public function fetchAll($sql)
+        public function fetchAll($sql): array
         {
             $rows = [];
             $result = $this->query($sql);
@@ -56,12 +56,12 @@
             return $rows;
         }
 
-        public function getLastInsertId()
+        public function getLastInsertId(): int
         {
             return $this->conn->insert_id;
         }
 
-        public function escapeString($value)
+        public function escapeString($value): string
         {
             return $this->conn->real_escape_string($value);
         }

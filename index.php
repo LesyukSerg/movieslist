@@ -3,8 +3,8 @@
     date_default_timezone_set('Europe/Kiev');
 
     define('ROOTDIR', getcwd());
-    define('cls', ROOTDIR . '/classes/');
-    define('view', ROOTDIR . '/view/');
+    const cls = ROOTDIR . '/classes/';
+    const view = ROOTDIR . '/view/';
 
     require ROOTDIR . '/conf/connect.php';
     require cls . 'Authorization.php';
