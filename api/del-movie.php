@@ -6,7 +6,7 @@
 
     $user_obj = new Authorization();
     $id = (int)$_GET['id'];
-    $mov_obj = new Movies($db);
+    $mov_obj = new Movies();
 
     if ($mov_obj->delete($id)) {
         $data = ['success' => true];

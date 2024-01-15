@@ -3,7 +3,7 @@
 
     $user_obj = new Classes\Authorization();
     $id = (int)$_GET['id'];
-    $dir_obj = new Classes\Directors($db);
+    $dir_obj = new Classes\Directors();
 
     if ($dir_obj->delete($id)) {
         $data = ['success' => true];
