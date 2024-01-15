@@ -1,5 +1,11 @@
 <?php
 
+    namespace Classes;
+
+    use mysqli;
+    use mysqli_result;
+
+
     class DB
     {
         private string $host;
@@ -27,7 +33,7 @@
             }
         }
 
-        public function query($sql): mysqli_result
+        public function query($sql)
         {
             $result = $this->conn->query($sql);
 
@@ -41,7 +47,9 @@
         public function fetchRow($sql): array
         {
             $result = $this->query($sql);
-            return $result->fetch_assoc();
+            $row = $result->fetch_assoc();
+
+            return is_array($row) ? $row : [];
         }
 
         public function fetchAll($sql): array

@@ -1,5 +1,8 @@
 <?php
 
+    namespace Classes;
+
+
     class Authorization
     {
         private string $login = 'admin';
