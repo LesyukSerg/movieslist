@@ -1,20 +1,14 @@
 <?php
-    session_start();
-    date_default_timezone_set('Europe/Kiev');
-    header('Content-Type', 'json/application');
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/conf/main.php';
 
-    define('ROOTDIR', getcwd() . '/../');
-    const cls = ROOTDIR . '/classes/';
-    const view = ROOTDIR . '/view/';
+    use Classes\Authorization;
+    use Classes\Movies;
 
-    require ROOTDIR . '/conf/connect.php';
-    require cls . 'Movies.php';
-    require cls . 'Authorization.php';
     $user_obj = new Authorization();
     $id = (int)$_GET['id'];
     $mov_obj = new Movies($db);
 
-    if ($mov_obj->deleteMovie($id)) {
+    if ($mov_obj->delete($id)) {
         $data = ['success' => true];
     } else {
         $data = ['success' => false];
