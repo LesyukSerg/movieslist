@@ -5,7 +5,7 @@
     $id = (int)$_GET['id'];
     $dir_obj = new Classes\Directors($db);
 
-    if ($dir_obj->deleteDirector($id)) {
+    if ($dir_obj->delete($id)) {
         $data = ['success' => true];
     } else {
         $data = ['success' => false];
